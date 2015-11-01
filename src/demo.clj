@@ -1,2 +1,2 @@
 
-(println "this is a demo" (+ 1 1))
+(println "a demo" (+ 1 2))

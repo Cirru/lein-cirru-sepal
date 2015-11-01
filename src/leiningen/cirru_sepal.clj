@@ -5,7 +5,7 @@
             [clojure.string :refer (replace-first)]
             [hawk.core :as hawk]))
 
-(def cwd (System/getenv "PWD"))
+(def cwd (str (System/getenv "PWD") "/"))
 (def compile-from "source")
 (def compile-to "src")
 
@@ -32,8 +32,10 @@
 
 (defn listen-file [event]
   (if (is-cirru (:file event))
-    (let [filename (.getName (:file event))]
-      (compile-file (str compile-from "/" filename)))))
+    (let
+      [ filename (.getAbsolutePath (:file event))
+        relativePath (clojure.string/replace filename cwd "")]
+      (compile-file relativePath))))
 
 (defn watch-all [dir]
   (println "Start watching files.")
