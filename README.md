@@ -2,7 +2,9 @@
 lein-cirru-sepal
 ----
 
-Leiningen plugin for compiling Cirru Sepal code into Clojure.
+> Leiningen plugin for compiling Cirru code into Clojure.
+
+Internally it uses [Sepal in Clojure](https://github.com/Cirru/sepal.clj) to transform code.
 
 ### Usage
 
@@ -11,7 +13,7 @@ Leiningen plugin for compiling Cirru Sepal code into Clojure.
 Add `cirru/lein-sepal` in `project.clj`(choose higher versions):
 
 ```clj
-:plugins [[cirru/lein-sepal "0.0.1"]]
+:plugins [[cirru/lein-sepal "0.0.5"]]
 ```
 
 It compiles `*.cirru` in `source/` to `*.clj` into `src/`.
