@@ -16,7 +16,10 @@ Add `cirru/lein-sepal` in `project.clj`(choose higher versions):
 :plugins [[cirru/lein-sepal "0.0.5"]]
 ```
 
-It compiles `*.cirru` in `source/` to `*.clj` into `src/`.
+It compiles `*.cirru` to `*.clj`...
+
+* from `cirru-src/` to `src/`
+* from `cirru-test/` to `test/`
 
 ```bash
 lein cirru-sepal # compile once

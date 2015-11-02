@@ -1,4 +1,4 @@
-(defproject cirru/lein-sepal "0.0.5"
+(defproject cirru/lein-sepal "0.0.6"
   :description "Leiningen plugin for compiling Cirru Sepal into Clojure"
   :url "https://github.com/Cirru/lein-cirru-sepal"
   :license {:name "Eclipse Public License"
