@@ -16,7 +16,13 @@ Add `cirru/lein-sepal` in `project.clj`(choose higher versions):
 :plugins [[cirru/lein-sepal "0.0.5"]]
 ```
 
-It compiles `*.cirru` to `*.clj`...
+Add configurations in your `project.clj` to set paths, for example:
+
+```clj
+:cirru-sepal {:paths ["cirru-src" "cirru-test"]}
+```
+
+It will compile `*.cirru` to `*.clj`...
 
 * from `cirru-src/` to `src/`
 * from `cirru-test/` to `test/`

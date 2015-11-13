@@ -25,12 +25,11 @@
 (defn is-cirru [f]
   (some? (re-matches #".*\.cirru" (.getName f))))
 
-(defn compile-all []
+(defn compile-all [paths]
   (println "Start compiling files.")
   (doall (map compile-file (filter is-cirru
-    (concat
-      (file-seq (io/file "cirru-src/"))
-      (file-seq (io/file "cirru-test/")))))))
+    (apply concat
+      (map (fn [path] (file-seq (io/file path))) paths))))))
 
 (defn listen-file [event]
   (if (is-cirru (:file event))
@@ -39,9 +38,9 @@
         relativePath (clojure.string/replace filename cwd "")]
       (compile-file relativePath))))
 
-(defn watch-all []
+(defn watch-all [paths]
   (println "Start watching files.")
-  (hawk/watch! [{:paths ["cirru-src" "cirru-test"]
+  (hawk/watch! [{:paths paths
                  :handler (fn [context event]
                             (listen-file event)
                             context)}])
@@ -51,5 +50,5 @@
 
 (defn cirru-sepal [project & args]
   (if (= (first args) "watch")
-    (watch-all)
-    (compile-all)))
+    (watch-all (:paths (:cirru-sepal project)))
+    (compile-all (:paths (:cirru-sepal project)))))
