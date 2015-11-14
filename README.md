@@ -19,7 +19,8 @@ Add `cirru/lein-sepal` in `project.clj`(choose higher versions):
 Add configurations in your `project.clj` to set paths, for example:
 
 ```clj
-:cirru-sepal {:paths ["cirru-src" "cirru-test"]}
+:cirru-sepal {:paths ["cirru-src" "cirru-test"]
+              :extension ".clj"}
 ```
 
 It will compile `*.cirru` to `*.clj`...
@@ -31,6 +32,8 @@ It will compile `*.cirru` to `*.clj`...
 lein cirru-sepal # compile once
 lein cirru-sepal watch # watch compiling
 ```
+
+You may set extension to `.cljs` if needed.
 
 ### License
 
