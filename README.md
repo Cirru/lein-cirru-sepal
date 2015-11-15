@@ -13,17 +13,16 @@ Internally it uses [Sepal in Clojure](https://github.com/Cirru/sepal.clj) to tra
 Add `cirru/lein-sepal` in `project.clj`(choose higher versions):
 
 ```clj
-:plugins [[cirru/lein-sepal "0.0.5"]]
+:plugins [[cirru/lein-sepal "0.0.10"]]
 ```
 
 Add configurations in your `project.clj` to set paths, for example:
 
 ```clj
-:cirru-sepal {:paths ["cirru-src" "cirru-test"]
-              :extension ".clj"}
+:cirru-sepal {:paths ["cirru-src" "cirru-test"]}
 ```
 
-It will compile `*.cirru` to `*.clj`...
+It will compile `*.clj.cirru` to `*.clj`(or `*.cljs.cirru` to `.cljs`):
 
 * from `cirru-src/` to `src/`
 * from `cirru-test/` to `test/`
