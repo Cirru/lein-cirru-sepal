@@ -6,6 +6,8 @@ lein-cirru-sepal
 
 Internally it uses [Sepal in Clojure](https://github.com/Cirru/sepal.clj) to transform code.
 
+[Quick Start](https://github.com/Cirru/sepal.clj/wiki/Quick-Start).
+
 ### Usage
 
 [![Clojars Project](http://clojars.org/cirru/lein-sepal/latest-version.svg)](http://clojars.org/cirru/lein-sepal)
@@ -13,7 +15,7 @@ Internally it uses [Sepal in Clojure](https://github.com/Cirru/sepal.clj) to tra
 Add `cirru/lein-sepal` in `project.clj`(choose higher versions):
 
 ```clj
-:plugins [[cirru/lein-sepal "0.0.10"]]
+:plugins [[cirru/lein-sepal "0.0.11"]]
 ```
 
 Add configurations in your `project.clj` to set paths, for example:
