@@ -1,9 +1,9 @@
-(defproject cirru/lein-sepal "0.0.11"
+(defproject cirru/lein-sepal "0.0.13"
   :description "Leiningen plugin for compiling Sepal.clj into Clojure"
   :url "https://github.com/Cirru/lein-cirru-sepal"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
-  :dependencies [[cirru/sepal "0.0.6"]
+  :dependencies [[cirru/sepal "0.0.7"]
                  [cirru/parser "0.0.3"]
                  [hawk "0.2.5"]]
   :eval-in-leiningen true
