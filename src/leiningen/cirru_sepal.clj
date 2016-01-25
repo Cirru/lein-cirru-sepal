@@ -19,8 +19,10 @@
 
 (defn compile-file [filename]
   (println (str "Compiling: " filename))
-  (with-open [wrtr (io/writer (create-path filename))]
-    (.write wrtr (compile-code (slurp filename)))))
+  (let
+    [result (compile-code (slurp filename))]
+    (with-open [wrtr (io/writer (create-path filename))]
+      (.write wrtr result))))
 
 (defn is-cirru [f]
   (some? (re-matches #".*\.cirru" (.getName f))))
