@@ -3,16 +3,20 @@
             [cirru.sepal :as sepal]
             [clojure.java.io :as io]
             [clojure.string :refer (replace-first)]
-            [hawk.core :as hawk]))
+            [hawk.core :as hawk])
+  (:import (java.io File)))
 
 (def cwd (str (System/getenv "PWD") "/"))
 (def compile-from "source")
 (def compile-to "src")
 
-(defn create-path [source-path]
-  (replace-first
-    (replace-first source-path "cirru-" "")
-    ".cirru" ""))
+(defn replace-extension [source-path]
+  (replace-first source-path ".cirru" ""))
+
+(defn replace-filename [source-path]
+  (-> source-path
+    (replace-first "cirru-" "")
+    (replace-first ".cirru" "")))
 
 (defn compile-code [code]
   (sepal/make-code (parser/pare code "")))
@@ -21,8 +25,11 @@
   (println (str "Compiling: " filename))
   (let
     [result (compile-code (slurp filename))]
-    (with-open [wrtr (io/writer (create-path filename))]
-      (.write wrtr result))))
+    (with-open [wrtr (io/writer (replace-extension filename))]
+      (.write wrtr result))
+    (.renameTo
+      (File. (replace-extension filename))
+      (File. (replace-filename filename)))))
 
 (defn is-cirru [f]
   (some? (re-matches #".*\.cirru" (.getName f))))
