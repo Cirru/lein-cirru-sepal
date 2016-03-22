@@ -27,6 +27,7 @@
     [result (compile-code (slurp filename))]
     (with-open [wrtr (io/writer (replace-extension filename))]
       (.write wrtr result))
+    (io/make-parents (replace-filename filename))
     (.renameTo
       (File. (replace-extension filename))
       (File. (replace-filename filename)))))
